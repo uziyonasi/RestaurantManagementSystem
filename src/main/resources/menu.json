@@ -1,0 +1,50 @@
+{
+  "Starters": [
+    {
+      "name": "Fries",
+      "price": 15,
+      "preparationTime": 5
+    },
+    {
+      "name": "Edamame",
+      "price": 20,
+      "preparationTime": 7
+    }
+  ],
+  "Meat": [
+    {
+      "name": "Steak",
+      "price": 130,
+      "preparationTime": 15
+    },
+    {
+      "name": "Hot Dogs",
+      "price": 30,
+      "preparationTime": 10
+    }
+  ],
+  "Fish": [
+    {
+      "name": "Salmon",
+      "price": 80,
+      "preparationTime": 12
+    },
+    {
+      "name": "Dicentrarchus",
+      "price": 75,
+      "preparationTime": 13
+    }
+  ],
+  "Desserts": [
+    {
+      "name": "Ice Cream",
+      "price": 10,
+      "preparationTime": 3
+    },
+    {
+      "name": "Soufflé",
+      "price": 15,
+      "preparationTime": 5
+    }
+  ]
+}
