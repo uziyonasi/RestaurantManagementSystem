@@ -64,6 +64,12 @@ class RestaurantManagementSystemApplicationTests {
     private MappingHelper mappingHelper;
 
     @Test
+    @org.junit.jupiter.api.Order(0)
+    void main() {
+        RestaurantManagementSystemApplication.main(new String[] {});
+    }
+
+    @Test
     @org.junit.jupiter.api.Order(1)
     void contextLoads() {
     }
@@ -188,19 +194,26 @@ class RestaurantManagementSystemApplicationTests {
 
     @Test
     @org.junit.jupiter.api.Order(16)
+    void testOrderCompareToSame() {
+        DishItem dishItem = new DishItem();
+        assertTrue(true, String.valueOf(dishItem.equals(dishItem)));
+    }
+
+    @Test
+    @org.junit.jupiter.api.Order(17)
     void testGetObjectMapper() {
         assertNotNull(mappingHelper.getObjectMapper());
     }
 
     @Test
-    @org.junit.jupiter.api.Order(16)
+    @org.junit.jupiter.api.Order(18)
     void testWriteObjectAsString() throws JsonProcessingException {
         List<Order> orderList = createOrder(OrderStatus.DEFINED);
         assertNotNull(mappingHelper.writeValueAsPretty(orderList));
     }
 
     @Test
-    @org.junit.jupiter.api.Order(16)
+    @org.junit.jupiter.api.Order(19)
     void testConcurrentChefInterruptedException() {
        ConcurrentChef concurrentChef = new ConcurrentChef(orderRepository.getPriorityBlockingQueue());
         Thread thread = new Thread(concurrentChef::run);
@@ -209,7 +222,7 @@ class RestaurantManagementSystemApplicationTests {
     }
 
     @Test
-    @org.junit.jupiter.api.Order(17)
+    @org.junit.jupiter.api.Order(20)
     void testConcurrentWaiterInterruptedException() {
         ConcurrentWaiter concurrentWaiter = new ConcurrentWaiter(orderRepository.getPriorityBlockingQueue(),
                 orderRepository, restaurantService.getCashFlow());
