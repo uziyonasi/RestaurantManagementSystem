@@ -7,8 +7,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,9 +20,9 @@ public class MenuRepository {
 
     @PostConstruct
     public void postConstruct() throws IOException {
-        File jsonFile = new ClassPathResource("menu.json").getFile();
+        InputStream inputStream = new ClassPathResource("menu.json").getInputStream();
 
-        menuMap = (Map) mappingHelper.getObjectMapper().readValue(jsonFile, Object.class);
+        menuMap = (Map) mappingHelper.getObjectMapper().readValue(inputStream, Object.class);
     }
 
     public Map<String, List<DishItem>> getMenu() {
