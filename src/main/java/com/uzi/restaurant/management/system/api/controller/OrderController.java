@@ -7,6 +7,8 @@ import com.uzi.restaurant.management.system.api.model.Order;
 import com.uzi.restaurant.management.system.api.repository.OrderRepository;
 import com.uzi.restaurant.management.system.api.service.OrderService;
 import com.uzi.restaurant.management.system.api.service.RestaurantService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.ObjectUtils;
@@ -23,6 +25,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/order")
 public class OrderController {
+    private Logger logger= LoggerFactory.getLogger(OrderController.class);
     @Autowired
     private OrderService orderService;
     @Autowired
@@ -62,6 +65,7 @@ public class OrderController {
 
     @GetMapping("/getCompletedOrders")
     public Object getCompletedOrders() {
+        logger.info("Retrieving all currently completed orders...");
         return orderRepository.getCompletedOrders();
     }
 }
